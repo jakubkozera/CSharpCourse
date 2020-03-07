@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace FirstProject
 {
@@ -6,26 +7,34 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What's your name?");
-            string userName = Console.ReadLine();
-            Console.WriteLine("Hello");
-            Console.WriteLine(userName);
+            string message1;
+            message1 = "some value";
+            Console.WriteLine(message1);
 
-            string someText = "Some text";
+            string message2 = null;
+            Console.WriteLine(message2);
+            string message3 = string.Empty;
+            string text = "He said \"Hi\"";
+            Console.WriteLine(text);
+            string windowLocation = "c:\\windows";
+            Console.WriteLine(windowLocation);
+            string fontsFolder = @"c:\windows\fonts";
+            Console.WriteLine(fontsFolder);
+            string concatenated = string.Concat(text, " to ", "me");
+            string concatenated2 = text + " to " + "me";
+            Console.WriteLine(concatenated);
+            Console.WriteLine(concatenated2);
 
-            char jChar = 'j';
-            char jCharUnicode = '\u006A';
+            string interpolated = $"{text} to me";
+            Console.WriteLine(interpolated);
+            StringBuilder sb = new StringBuilder("This");
+            sb.Append("is");
+            sb.Append("a");
+            sb.Append("long");
+            sb.Append("text");
 
-            bool isUserReady = false;
-
-            DateTime now = DateTime.Now;
-            DateTime dateOfBirth = new DateTime(1990, 6, 6);
-
-            byte byteNumber = 200;
-            float floatNumber = 1.5F;
-            decimal decimalNumber = 1.5M;
-            double doubleNumber = 1.5;
-
+            string result = sb.ToString();
+            Console.WriteLine(result);
         }
     }
 }
