@@ -8,7 +8,7 @@ namespace FirstProject
         static void Main(string[] args)
         {
             int result;
-            int x = 10
+            int x = 10;
             int y = 5;
 
             result = (x + y);
