@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using System.Threading.Channels;
 
 namespace FirstProject
 {
@@ -8,23 +7,29 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            switch (DateTime.Now.DayOfWeek)
-            {
-                case DayOfWeek.Monday:
-                    Console.WriteLine("It's Monday ;(");
-                    break;
-                case DayOfWeek.Friday:
-                    Console.WriteLine("The last day of the work week.");
-                    break;
-                case DayOfWeek.Sunday:
-                case DayOfWeek.Saturday:
-                    Console.WriteLine("The weekend!");
-                    break;
-                default:
-                    Console.WriteLine("The middle of the work week.");
-                    break;
+            byte byteValue = 100;
+            int intValue = byteValue;
+            byte byteValue2 = (byte)intValue;
+            double doubleValue = 3.5;
+            int intValue2 = (int)doubleValue;
 
+
+            string stringValue2 = intValue2.ToString();
+
+            string userInput = Console.ReadLine();
+            int yearOfBirth;
+            if (int.TryParse(userInput, out yearOfBirth))
+            {
+                int age = DateTime.Now.Year - yearOfBirth;
+
+                Console.WriteLine("You are " + age);
             }
+            else
+            {
+                Console.WriteLine("Incorrect value");
+            }
+
+
         }
     }
 }
