@@ -20,6 +20,18 @@ namespace FirstProject
                 }
                 i++;
             }
+
+            Console.WriteLine("********");
+
+            for (int j = 0; j < cars.Length; j++)
+            {
+                Console.WriteLine(cars[j]);
+                if (cars[j] == "BMW")
+                {
+                    Console.WriteLine("Bye");
+                    break;
+                }
+            }
         }
     }
 }
