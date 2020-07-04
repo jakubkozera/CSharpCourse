@@ -7,19 +7,14 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            string[] cars = { "Volvo", "BMW", "Mazda" };
+            Console.WriteLine("To exit, type 'x'");
+            string userInput;
 
-            int i = 0;
-            while (i < cars.Length)
+            do
             {
-                Console.WriteLine(cars[i]);
-                if (cars[i] == "BMW")
-                {
-                    Console.WriteLine("Bye");
-                    break;
-                }
-                i++;
-            }
+                userInput = Console.ReadLine();
+                Console.WriteLine($"Echo: {userInput}");
+            } while (userInput != "x");
         }
     }
 }
