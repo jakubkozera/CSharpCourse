@@ -9,14 +9,17 @@ namespace FirstProject
         {
             string[] cars = { "Volvo", "BMW", "Mazda" };
 
-            Console.WriteLine(cars[0]);
-            cars[2] = "Tesla";
-
-            int carsCount = cars.Length; // 3
-
-            string lastElement = cars[cars.Length - 1];
-            Console.WriteLine(lastElement);
-
+            int i = 0;
+            while (i < cars.Length)
+            {
+                Console.WriteLine(cars[i]);
+                if (cars[i] == "BMW")
+                {
+                    Console.WriteLine("Bye");
+                    break;
+                }
+                i++;
+            }
         }
     }
 }
