@@ -8,22 +8,18 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            switch (DateTime.Now.DayOfWeek)
-            {
-                case DayOfWeek.Monday:
-                    Console.WriteLine("It's Monday ;(");
-                    break;
-                case DayOfWeek.Friday:
-                    Console.WriteLine("The last day of the work week.");
-                    break;
-                case DayOfWeek.Sunday:
-                case DayOfWeek.Saturday:
-                    Console.WriteLine("The weekend!");
-                    break;
-                default:
-                    Console.WriteLine("The middle of the work week.");
-                    break;
+            Console.WriteLine("What is your gender? 1 - Male, 2 - Female");
+            string userInput = Console.ReadLine();
 
+            Gender userGender = (Gender)Enum.Parse(typeof(Gender), userInput);
+
+            if (userGender == Gender.Male)
+            {
+                Console.WriteLine("Only women are allowed");
+            }
+            else
+            {
+                Console.WriteLine("Hi");
             }
         }
     }
