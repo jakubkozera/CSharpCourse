@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FirstProject
 {
-    enum Gender : short
+    enum Gender : byte
     {
         Male = 1,
         Female = 2
