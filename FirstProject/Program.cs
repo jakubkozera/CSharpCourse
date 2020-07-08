@@ -1,4 +1,5 @@
-﻿using System;
+﻿#pragma warning disable 219
+using System;
 using System.Text;
 using System.Threading.Channels;
 
@@ -8,19 +9,9 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your gender? 1 - Male, 2 - Female");
-            string userInput = Console.ReadLine();
+            int? favoriteNumber = 23;
 
-            Gender userGender = (Gender)Enum.Parse(typeof(Gender), userInput);
-
-            if (userGender == Gender.Male)
-            {
-                Console.WriteLine("Only women are allowed");
-            }
-            else
-            {
-                Console.WriteLine("Hi");
-            }
+            Console.WriteLine("Favorite number: " + (favoriteNumber.HasValue ? favoriteNumber.Value.ToString() : ""));
         }
     }
 }
