@@ -1,5 +1,6 @@
 ﻿#pragma warning disable 219
 using System;
+using System.Globalization;
 using System.Text;
 using System.Threading.Channels;
 
@@ -9,9 +10,29 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            int? favoriteNumber = 23;
+            string[] cars = { "Volvo", "BMW", "Mazda" };
 
-            Console.WriteLine("Favorite number: " + (favoriteNumber.HasValue ? favoriteNumber.Value.ToString() : ""));
+
+            try
+            {
+                Console.WriteLine("Inside try - 1");
+                cars[4] = "Tesla"; // throws System.IndexOutOfRangeException
+                Console.WriteLine("Inside try - 2");
+
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine("Handling IndexOutOfRangeException exception");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Handling any exception");
+            }
+            finally
+            {
+                Console.WriteLine("Cleanup");
+            }
+            Console.WriteLine("Outside of try-catch");
         }
     }
 }
