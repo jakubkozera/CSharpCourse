@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FirstProject
+namespace FirstProject.Enums
 {
-    enum Gender : byte
+    enum Gender
     {
-        Male = 1,
-        Female = 2
+        Male,
+        Female
     }
 }
