@@ -1,4 +1,5 @@
-﻿using System;
+﻿// ReSharper disable All
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +12,18 @@ namespace FirstProject
 
         private DateTime dateOfBirth;
 
+        public Person(string firstName, string lastName)
+        {
+            Console.WriteLine("Constructor1");
+            FirstName = firstName;
+            LastName = lastName;
+        }
+        public Person(DateTime dateOfBirth, string firstName, string lastName) : this(firstName, lastName)
+        {
+            Console.WriteLine("Constructor2");
+
+            SetDateOfBirth(dateOfBirth);
+        }
         public void SetDateOfBirth(DateTime date)
         {
             if (date > DateTime.Now)

@@ -1,0 +1,13 @@
+﻿[*.cs]
+
+# CS0219: Variable is assigned but its value is never used
+dotnet_diagnostic.CS0219.severity = none
+
+# IDE0059: Unnecessary assignment of a value
+csharp_style_unused_value_assignment_preference = unused_local_variable:none
+
+# IDE0005: Using directive is unnecessary.
+dotnet_diagnostic.IDE0005.severity = none
+
+# CS0168: Variable is declared but never used
+dotnet_diagnostic.CS0168.severity = none
