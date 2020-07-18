@@ -12,7 +12,7 @@ namespace FirstProject
 
         private DateTime dateOfBirth;
         private string contactNumber;
-
+        public static int Count = 0;
         public string ContactNumber
         {
             get { return contactNumber; }
@@ -33,6 +33,7 @@ namespace FirstProject
         {
             FirstName = firstName;
             LastName = lastName;
+            Count++;
         }
         public Person(DateTime dateOfBirth, string firstName, string lastName) : this(firstName, lastName)
         {

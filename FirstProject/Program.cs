@@ -14,9 +14,11 @@ namespace FirstProject
             bill.ContactNumber = "999888777";
             Console.WriteLine(bill.ContactNumber);
 
-            Person john = new Person(new DateTime(1990, 1, 2), "John", "Wick" );
+            Person john = new Person(new DateTime(1990, 1, 2), "John", "Wick");
 
             john.SayHi();
+
+            Console.WriteLine($"Objects of Person type count: {Person.Count}");
         }
     }
 }
