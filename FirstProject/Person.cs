@@ -11,19 +11,34 @@ namespace FirstProject
         public string LastName;
 
         private DateTime dateOfBirth;
+        private string contactNumber;
+
+        public string ContactNumber
+        {
+            get { return contactNumber; }
+            set
+            {
+                if (value.Length < 9)
+                {
+                    Console.WriteLine("Invalid contact number");
+                }
+                else
+                {
+                    contactNumber = value;
+                }
+            }
+        }
 
         public Person(string firstName, string lastName)
         {
-            Console.WriteLine("Constructor1");
             FirstName = firstName;
             LastName = lastName;
         }
         public Person(DateTime dateOfBirth, string firstName, string lastName) : this(firstName, lastName)
         {
-            Console.WriteLine("Constructor2");
-
             SetDateOfBirth(dateOfBirth);
         }
+
         public void SetDateOfBirth(DateTime date)
         {
             if (date > DateTime.Now)

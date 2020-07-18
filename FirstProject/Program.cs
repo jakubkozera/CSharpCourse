@@ -11,6 +11,8 @@ namespace FirstProject
             bill.SetDateOfBirth(new DateTime(1990, 1, 1));
 
             bill.SayHi();
+            bill.ContactNumber = "999888777";
+            Console.WriteLine(bill.ContactNumber);
 
             Person john = new Person(new DateTime(1990, 1, 2), "John", "Wick" );
 
