@@ -1,4 +1,5 @@
 ﻿using System;
+using ClassLibrary;
 
 namespace FirstProject
 {
@@ -19,6 +20,9 @@ namespace FirstProject
             wordDocumentFile.FileName = "word-file";
 
             wordDocumentFile.Print();
+
+            Class1 test = new Class1();
+
         }
     }
 }
