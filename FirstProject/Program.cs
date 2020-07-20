@@ -21,8 +21,6 @@ namespace FirstProject
 
             wordDocumentFile.Print();
 
-            Class1 test = new Class1();
-
         }
     }
 }

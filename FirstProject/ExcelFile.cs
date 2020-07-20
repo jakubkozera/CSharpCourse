@@ -7,7 +7,10 @@ namespace FirstProject
     class ExcelFile : File
     {
 
-
+        public override void Compress()
+        {
+            Console.WriteLine("Compressing ExcelFile");
+        }
         public void GenerateReport()
         {
             string prop = ProtectedProp;
