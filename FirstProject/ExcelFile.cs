@@ -13,7 +13,6 @@ namespace FirstProject
         }
         public void GenerateReport()
         {
-            string prop = ProtectedProp;
             Console.WriteLine($"{FileName} report..");
         }
     }
