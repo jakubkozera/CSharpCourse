@@ -4,11 +4,11 @@ using System.Text;
 
 namespace FirstProject
 {
-    abstract class File
+    interface IFile
     {
-        public string FileName { get; set; }
-        public int Size { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public abstract void Compress();
+        string FileName { get; set; }
+        int Size { get; set; }
+        DateTime CreatedOn { get; set; }
+        void Compress();
     }
 }

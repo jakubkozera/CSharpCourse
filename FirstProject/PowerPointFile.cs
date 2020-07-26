@@ -4,9 +4,12 @@ using System.Text;
 
 namespace FirstProject
 {
-    class PowerPointFile : File
+    class PowerPointFile : IFile
     {
-        public override void Compress()
+        public string FileName { get; set; }
+        public int Size { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public void Compress()
         {
             Console.WriteLine("Compressing PowerPointFile");
         }
