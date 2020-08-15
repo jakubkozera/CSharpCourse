@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using ClassLibrary;
 
 namespace FirstProject
 {
@@ -9,12 +7,12 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            Shape[] shapes = {new Circle(), new Rectangle(), new Triangle(),};
+            int[] intArray = {1, 2, 3, 4, 5};
+            int arrayLength = intArray.Length; // 5
 
-            foreach (Shape shape in shapes)
-            {
-                shape.Draw();
-            }
+            List<int> intList = new List<int>();
+            intList.Add(6);
+            //intList.Add("7");
 
         }
     }
