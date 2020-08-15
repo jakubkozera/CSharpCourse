@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using ClassLibrary;
 
 namespace FirstProject
@@ -7,19 +9,12 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            ExcelFile excelFile = new ExcelFile();
+            Shape[] shapes = {new Circle(), new Rectangle(), new Triangle(),};
 
-            excelFile.CreatedOn = DateTime.Now;
-            excelFile.FileName = "excel-file";
-
-            excelFile.GenerateReport();
-
-            WordDocumentFile wordDocumentFile = new WordDocumentFile();
-
-            wordDocumentFile.CreatedOn = DateTime.Now;
-            wordDocumentFile.FileName = "word-file";
-
-            wordDocumentFile.Print();
+            foreach (Shape shape in shapes)
+            {
+                shape.Draw();
+            }
 
         }
     }
