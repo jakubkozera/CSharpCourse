@@ -5,14 +5,34 @@ namespace FirstProject
 {
     class Program
     {
+        static void DisplayElements(List<int> list)
+        {
+            Console.WriteLine("** List **");
+            foreach (int element in list)
+            {
+                Console.Write($"{element}, ");
+            }
+
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
-            int[] intArray = {1, 2, 3, 4, 5};
-            int arrayLength = intArray.Length; // 5
+            List<int> intList = new List<int>() { 6, 1, 20, 3, 45, 60,100, 2 };
+            DisplayElements(intList);
 
-            List<int> intList = new List<int>();
-            intList.Add(6);
-            //intList.Add("7");
+            Console.WriteLine("New element:");
+            string userInput = Console.ReadLine();
+            int intValue = int.Parse(userInput);
+            intList.Add(intValue);
+            DisplayElements(intList);
+
+            Console.WriteLine("Remove range");
+            intList.RemoveRange(1, 2);
+            DisplayElements(intList);
+            Console.WriteLine("Sort");
+            intList.Sort();
+            DisplayElements(intList);
 
         }
     }
