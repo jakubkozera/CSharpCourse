@@ -28,21 +28,12 @@ namespace FirstProject
         {
             List<Person> employees = GetEmployees();
 
-            bool EmployeeIsYoung(Person employee)
-            {
-                return employee.GetDateOfBirth() > new DateTime(2000, 1, 1);
-            }
-            List<Person> youngEmployees = employees.Where(EmployeeIsYoung).ToList();
+            List<Person> youngEmployees = employees.Where(e => e.GetDateOfBirth() > new DateTime(2000, 1, 1)).ToList();
 
 
             Console.WriteLine($"Young employees count: {youngEmployees.Count}");
 
-
-            bool EmployeeIsBob(Person employee)
-            {
-                return employee.FirstName == "Bob";
-            }
-            Person bob = youngEmployees.FirstOrDefault(EmployeeIsBob);
+            Person bob = youngEmployees.FirstOrDefault(e => e.FirstName == "Bob");
 
             if (bob != null)
             {
