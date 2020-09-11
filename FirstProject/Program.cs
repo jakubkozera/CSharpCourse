@@ -16,7 +16,7 @@ namespace FirstProject
             {
                 { "usd", new Currency("usd", "United States, Dollar", 1)},
                 { "eur", new Currency("eur", "Euro", 0.83975)},
-                { "gbp",  new Currency("gbp", "British Pound", 0.74771)},
+                { "gbp", new Currency("gbp", "British Pound", 0.74771)},
                 { "cad", new Currency("cad", "Canadian Dollar", 1.30724)},
                 { "inr", new Currency("inr", "Indian Rupee", 73.04)},
                 { "mxn", new Currency("mxn", "Mexican Peso", 21.7571)}
@@ -28,8 +28,11 @@ namespace FirstProject
             var currencies = GetCurrencies();
             Console.WriteLine("Check the rate for:");
             var userInput = Console.ReadLine();
+
             var index = 1;
-            var someText = "test";
+
+            var someText = "tests";
+
             Currency selectedCurrency = null;
             if (currencies.TryGetValue(userInput, out selectedCurrency))
             {
