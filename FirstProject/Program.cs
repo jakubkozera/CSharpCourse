@@ -1,55 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 namespace FirstProject
 {
     class Program
     {
-        static void ScanAndAppend()
-        {
-            var files = Directory.GetFiles("D:/TextFiles/Append/", "*.txt", SearchOption.AllDirectories);
-            foreach (string file in files)
-            {
-                File.AppendAllText(file, "All rights reserved");
-            }
-        }
-        static void ReadFiles()
-        {
-            var document1 = File.ReadAllText(@"D:\TextFiles\Read\document1.txt");
-            var document2 = File.ReadAllLines(@"D:\TextFiles\Read\document2.txt");
-
-            var document2String = string.Join(Environment.NewLine, document2);
-
-            Console.WriteLine("document1");
-            Console.WriteLine(document1);
-
-            Console.WriteLine("document2");
-            Console.WriteLine(document2String);
-
-        }
-
-        static void GenerateDocuments()
-        {
-            Console.WriteLine("Insert name");
-            var name = Console.ReadLine();
-
-            Console.WriteLine("Insert orderNumber:");
-            var orderNumber = Console.ReadLine();
-
-            var template = File.ReadAllText(@"D:/TextFiles/Write/template.txt");
-            var document = template.Replace("{name}", name)
-                .Replace("{orderNumber}", orderNumber)
-                .Replace("{dateTime}", DateTime.Now.ToString());
-
-            File.WriteAllText($"D:/TextFiles/Write/document-{name}.txt", document);
-
-        }
         static void Main(string[] args)
         {
-            //ReadFiles();
-            //GenerateDocuments();
-            ScanAndAppend();
+            string playerSerialized = File.ReadAllText(@"D:\JSON\playerSerialized.json");
+            Player player = JsonConvert.DeserializeObject<Player>(playerSerialized);
+
+            Console.WriteLine(player.Name);
+
+            //var player = new Player()
+            //{
+            //    Name = "Mario",
+            //    Level = 1,
+            //    HealthPoints = 100,
+            //    Statistics = new List<Statistic>()
+            //    {
+            //        new Statistic()
+            //        {
+            //            Name = "Strength",
+            //            Points = 10
+            //        },
+            //        new Statistic()
+            //        {
+            //            Name = "Intelligence",
+            //            Points = 10
+            //        }
+            //    }
+            //};
+
+            ////..
+            //player.Level++;
+
+            //string playerSerialized = JsonConvert.SerializeObject(player);
+
+            //File.WriteAllText(@"D:\JSON\playerSerialized.json", playerSerialized);
+
         }
     }
 }
