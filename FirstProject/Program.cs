@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json.Serialization;
-using Newtonsoft.Json;
-using JsonConverter = Newtonsoft.Json.JsonConverter;
-// ReSharper disable once UseIndexFromEndExpression
-// ReSharper disable PossibleNullReferenceException
+using System.Text;
 
 namespace FirstProject
 {
@@ -13,74 +9,60 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Insert input:");
-            string userInput = Console.ReadLine();
+            //kebab case:
+            //some-variable-name
 
-            //SubString(userInput);
-            //Replace(userInput);
-            //Modify(userInput);
-            CheckString(userInput);
-            //AlterTextCase(userInput);
-            //CheckString(userInput);
+            //camel case:
+            //someVariableName
+
+            Console.WriteLine("Insert camel cased variable name");
+            string camelCased = Console.ReadLine();
+
+            Console.WriteLine(CamelToKebabCase(camelCased));
+
         }
 
-
-
-        static void SubString(string userInput)
+        static string CamelToKebabCase(string input)
         {
-            if (userInput.Length > 10)
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char currentChar in input)
             {
-
-                string startSubstring = userInput.Substring(0, 10);
-                string endSubstring = userInput.Substring(userInput.Length - 10);
-                Console.WriteLine($"{startSubstring}..., ...{endSubstring}");
-                Console.WriteLine(userInput);
+                if (char.IsUpper(currentChar))
+                {
+                    sb.Append("-");
+                    sb.Append(char.ToLower(currentChar));
+                }
+                else
+                {
+                    sb.Append(currentChar);
+                }
             }
+
+            return sb.ToString();
         }
-
-        static void Replace(string userInput)
+        static string KebabToCamelCase(string input)
         {
-            string template = "Hello {name}, how are you {name}?";
-            string output = template.Replace("{name}", userInput);
-            Console.WriteLine(output);
+            StringBuilder sb = new StringBuilder();
 
-        }
+            for (int i = 0; i < input.Length; i++)
+            {
+                char currentChar = input[i];
 
-        static void Modify(string userInput)
-        {
-            string trimmedString = userInput.Trim();
+                if (currentChar != '-')
+                {
+                    sb.Append(currentChar);
+                }
+                else
+                {
+                    char nextChar = input[i + 1];
+                    sb.Append(char.ToUpper(nextChar));
+                    i++;
+                }
+            }
 
-            Console.WriteLine(trimmedString);
+            return sb.ToString();
 
-        }
-
-        static void AlterTextCase(string userInput)
-        {
-            string upperCased = userInput.ToUpper();
-            string lowerCased = userInput.ToLower();
-
-            Console.WriteLine(upperCased);
-            Console.WriteLine(lowerCased);
-        }
-
-        static void Split(string userInput)
-        {
-            string[] inputParts = userInput.Split(" ");
-            string firstname = inputParts[0];
-            string lastName = inputParts[inputParts.Length - 1];
-            Console.WriteLine($"Hello {firstname} {lastName}");
-        }
-
-        static void CheckString(string userInput)
-        {
-            bool isTextFile = userInput.EndsWith(".txt", StringComparison.CurrentCultureIgnoreCase);
-            bool startsWithDocPrefix = userInput.StartsWith("doc-", StringComparison.CurrentCultureIgnoreCase);
-
-            bool containsText = userInput.Contains("TEXT", StringComparison.CurrentCultureIgnoreCase);
-
-            Console.WriteLine($"containsText: {containsText}");
-            Console.WriteLine($"isTextFile: {isTextFile}");
-            Console.WriteLine($"startsWithDocPrefix: {startsWithDocPrefix}");
         }
     }
 }
