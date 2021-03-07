@@ -19,7 +19,7 @@ namespace FirstProject
             string startDateString = Console.ReadLine();
             DateTime startDate = DateTime.ParseExact(startDateString, "yyyy-MM-dd", null);
 
-
+            Console.WriteLine("Insert new booking end date: (yyyy-MM-dd)");
             string endDateString = Console.ReadLine();
             DateTime endDate = DateTime.ParseExact(endDateString, "yyyy-MM-dd", null);
 
