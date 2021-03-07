@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -9,61 +10,78 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            //kebab case:
-            //some-variable-name
-
-            //camel case:
-            //someVariableName
-
-            Console.WriteLine("Insert camel cased variable name");
-            string camelCased = Console.ReadLine();
-
-            Console.WriteLine(CamelToKebabCase(camelCased));
-
+            //DateTimeModification();
+            //DateTimeFormatting();
+            //TimeMeasurement();
+            DateTimeHelpers();
         }
 
-        static string CamelToKebabCase(string input)
+        static void DateTimeModification()
         {
-            StringBuilder sb = new StringBuilder();
+            DateTime now = DateTime.Now;
+            DateTime openDate = new DateTime(1992, 6, 17);
 
-            foreach (char currentChar in input)
-            {
-                if (char.IsUpper(currentChar))
-                {
-                    sb.Append("-");
-                    sb.Append(char.ToLower(currentChar));
-                }
-                else
-                {
-                    sb.Append(currentChar);
-                }
-            }
+            TimeSpan result =  now - openDate;
 
-            return sb.ToString();
+            Console.WriteLine(result.Days);
+            Console.WriteLine(result.TotalDays);
+
+            DateTime expiresAt = now.AddDays(7);
+            DateTime expiresAt2 = now.Add(new TimeSpan(7, 1, 0, 0));
+
+            Console.WriteLine(expiresAt);
+            Console.WriteLine(expiresAt2);
+
+            bool expiresAtTheSameDay = expiresAt.Date  == expiresAt2.Date;
+            Console.WriteLine($"expiresAtTheSameDay :{expiresAtTheSameDay}");
+
         }
-        static string KebabToCamelCase(string input)
+
+        static void DateTimeFormatting()
         {
-            StringBuilder sb = new StringBuilder();
+            DateTime now = DateTime.Now;
+            Console.WriteLine(now.ToShortDateString());
+            Console.WriteLine(now.ToLongDateString());
+            Console.WriteLine(now.ToString("g"));
+            Console.WriteLine(now.ToString("G"));
+            Console.WriteLine(now.ToString("yyyy-MM-dd hh:mm:ss")); //
+            
+        }
 
-            for (int i = 0; i < input.Length; i++)
-            {
-                char currentChar = input[i];
+        static void TimeMeasurement()
+        {
+            Console.WriteLine("What is 2+2?");
+            Console.WriteLine("A)4");
+            Console.WriteLine("B)6");
+            Console.WriteLine("C)8");
 
-                if (currentChar != '-')
-                {
-                    sb.Append(currentChar);
-                }
-                else
-                {
-                    char nextChar = input[i + 1];
-                    sb.Append(char.ToUpper(nextChar));
-                    i++;
-                }
-            }
+            DateTime start = DateTime.Now;
 
-            return sb.ToString();
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
+            string userAnswer = Console.ReadLine();
+
+            stopwatch.Stop();
+
+
+            DateTime end = DateTime.Now;
+
+            TimeSpan responseTime = end - start;
+
+            Console.WriteLine($"Response took you {stopwatch.Elapsed.TotalSeconds} Seconds");
+
 
         }
+
+        static void DateTimeHelpers()
+        {
+            int daysInFeb2021 = DateTime.DaysInMonth(2021, 2);
+            bool is2021LeapYear = DateTime.IsLeapYear(2021);
+
+            Console.WriteLine($"daysInFeb2021: {daysInFeb2021}");
+            Console.WriteLine($"is2021LeapYear: {is2021LeapYear}");
+        }
+
     }
 }
 
