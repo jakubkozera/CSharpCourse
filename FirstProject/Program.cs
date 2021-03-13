@@ -16,7 +16,7 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            string csvPath = @"D:\Dataset\googleplaystore1.csv";
+            string csvPath = @"CSV_PATH";
             var googleApps = LoadGoogleAps(csvPath);
 
             Display(googleApps);
