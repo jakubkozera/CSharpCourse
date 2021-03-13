@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
+using CsvHelper;
+using CsvHelper.Configuration;
+
 // ReSharper disable UseFormatSpecifierInInterpolation
 
 namespace FirstProject
@@ -11,20 +16,42 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            DateTime now = DateTime.Now;
-            DateTime before = now.Subtract(new TimeSpan(7, 0, 0, 0));
-            DateTime after = now.AddDays(7);
+            string csvPath = @"D:\Dataset\googleplaystore1.csv";
+            var googleApps = LoadGoogleAps(csvPath);
 
-            bool isDateBetween = Utils.IsDateBetween(now, before, after);
+            Display(googleApps);
 
-            bool isDateBetween2 = now.IsBetween(before, after);
 
-            int value = 2;
-            value.Squared();
+        }
+
+        static void Display(IEnumerable<GoogleApp> googleApps)
+        {
+            foreach (var googleApp in googleApps)
+            {
+                Console.WriteLine(googleApp);
+            }
+
+        }
+        static void Display(GoogleApp googleApp)
+        {
+            Console.WriteLine(googleApp);
+        }
+
+        static List<GoogleApp> LoadGoogleAps(string csvPath)
+        {
+            using (var reader = new StreamReader(csvPath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                csv.Context.RegisterClassMap<GoogleAppMap>();
+                var records = csv.GetRecords<GoogleApp>().ToList();
+                return records;
+            }
 
         }
 
     }
+
+    
 }
 
 
