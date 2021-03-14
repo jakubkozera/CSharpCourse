@@ -10,7 +10,7 @@ namespace FirstProject
     {
         public string Name { get; set; }
         public Category Category { get; set; }
-        public decimal Rating { get; set; }
+        public float Rating { get; set; }
         public int Reviews { get; set; }
         public string Size { get; set; }
         public string Installs { get; set; }

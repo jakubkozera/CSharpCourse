@@ -16,12 +16,23 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            string csvPath = @"CSV_PATH";
+            string csvPath = @"D:\Dataset\googleplaystore1.csv";
             var googleApps = LoadGoogleAps(csvPath);
 
-            Display(googleApps);
+            //Display(googleApps);
+            GetData(googleApps);
 
+        }
 
+        static void GetData(IEnumerable<GoogleApp> googleApps)
+        {
+            var highRatedApps = googleApps.Where(app => app.Rating > 4.6);
+            var highRatedBeautyApps = googleApps.Where(app => app.Rating > 4.6 && app.Category == Category.BEAUTY);
+            Display(highRatedBeautyApps);
+
+            var firstHighRatedBeautyApp = highRatedBeautyApps.LastOrDefault(app => app.Reviews < 50);
+            Console.WriteLine("firstHighRatedBeautyApp ");
+            Console.WriteLine(firstHighRatedBeautyApp);
         }
 
         static void Display(IEnumerable<GoogleApp> googleApps)
