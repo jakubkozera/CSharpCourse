@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
-
+// ReSharper disable PossibleMultipleEnumeration
 // ReSharper disable UseFormatSpecifierInInterpolation
 
 namespace FirstProject
@@ -23,9 +23,43 @@ namespace FirstProject
             //GetData(googleApps);
             //ProjectData(googleApps);
             //DivideData(googleApps);
-            OrderData(googleApps);
+            //OrderData(googleApps);
+            DataSetOperation(googleApps);
         }
 
+        static void DataSetOperation(IEnumerable<GoogleApp> googleApps)
+        {
+            var paidAppsCategories = googleApps.Where(a => a.Type == Type.Paid)
+                .Select(a => a.Category).Distinct();
+
+
+            //Console.WriteLine($"Paid apps categories: {string.Join(", ", paidAppsCategories)}");
+
+            var setA = googleApps.Where(a => a.Rating > 4.7 && a.Type == Type.Paid && a.Reviews > 1000);
+
+            var setB = googleApps.Where(a => a.Name.Contains("Pro") && a.Rating > 4.6 && a.Reviews > 10000);
+
+            //Display(setA);
+
+            //Console.WriteLine("\n*******");
+
+            //Display(setB);
+
+
+            var appsUnion = setA.Union(setB);
+            //Console.WriteLine("Apps union");
+            //Display(appsUnion);
+
+            var appsIntersect = setA.Intersect(setB);
+            Console.WriteLine("Apps intersect");
+            Display(appsIntersect);
+
+            var appsExcept = setA.Except(setB);
+            Console.WriteLine("Apps except");
+            Display(appsExcept);
+
+
+        }
         static void OrderData(IEnumerable<GoogleApp> googleApps)
         {
             var highRatedBeautyApps = googleApps.Where(app => app.Rating > 4.4 && app.Category == Category.BEAUTY);
