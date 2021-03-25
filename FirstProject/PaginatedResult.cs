@@ -12,7 +12,7 @@ namespace FirstProject
 
     public class User
     {
-
+        public string Name { get; set; }
     }
 
     public class PaginatedResult<T>
