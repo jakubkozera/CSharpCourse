@@ -6,13 +6,28 @@ using System.Threading.Tasks;
 
 namespace FirstProject
 {
-    public class Restaurant
+    public interface IEntity
     {
+        int Id { get; set; }
+    }
+    public class Restaurant : IEntity
+    {
+        public int Id { get; set; }
     }
 
-    public class User
+    public class User : IEntity
     {
+        public User()
+        {
+            
+        }
+        public User(string name, int id)
+        {
+            Name = name;
+            Id = id;
+        }
         public string Name { get; set; }
+        public int Id { get; set; }
     }
 
     public class PaginatedResult<T>

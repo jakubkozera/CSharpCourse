@@ -19,11 +19,13 @@ namespace FirstProject
 
             //result.Results = users; // compile error
 
-            var stringRepository = new Repository<string>();
+            //var stringRepository = new Repository<string>();
 
-            stringRepository.AddElement("some value");
+            //stringRepository.AddElement("some value");
 
-            string firstElement = stringRepository.GetElement(0);
+            //string firstElement = stringRepository.GetElement(0);
+
+            var user2Repository = new Repository<User>();
 
 
             var userRepository = new Repository<string, User>();
