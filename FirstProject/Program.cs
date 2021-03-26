@@ -34,6 +34,15 @@ namespace FirstProject
 
             User bill = userRepository.GetElement("Bill");
 
+
+            int[] intArray = new []{ 1, 3, 5};
+
+            Utils.Swap(ref intArray[0], ref intArray[2]);
+
+
+            Console.WriteLine(string.Join(" ", intArray));
+
+
         }
 
     }
