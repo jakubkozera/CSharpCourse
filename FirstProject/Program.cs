@@ -1,58 +1,50 @@
 ﻿// ReSharper disable All
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 
 namespace FirstProject
 {
     class Program
     {
-        public static IEnumerable<int> GetData()
-        {
-            Console.WriteLine("Get data start");
-
-            var result = new List<int>();
-            for (int i = 0; i <= 9; i++)
-            {
-                Console.WriteLine($"Get data element: {i}");
-                result.Add(i);
-            }
-
-            Console.WriteLine("Get data end");
-
-            return result;
-        }
-        public static IEnumerable<int> GetYieldedData()
-        {
-            Console.WriteLine("GetYieldedData start");
-
-            for (int i = 1; i <= 9; i++)
-            {
-                Console.WriteLine($"GetYieldedData element: {i}");
-                yield return i;
-                if (i % 3 == 0)
-                {
-                    yield break;
-                }
-            }
-
-            Console.WriteLine("GetYieldedData stop");
-
-        }
-
-
         static void Main(string[] args)
         {
-            var data = GetYieldedData();
-            foreach (int element in data)
+            var filePath = "D:/file.txt";
+            var fileContent = File.ReadAllLines(filePath);
+
+
+            using (var someClass = new SomeClass())
             {
-                Console.WriteLine($"main element: {element}");
-                if (element > 5)
-                {
-                    break;
-                }
+                someClass.Say("Hi");
             }
+
+            using (var readFileStream = new FileStream(filePath, FileMode.Open))
+            {
+                //readFileStream.Read();
+
+            }
+
+
+
+
+            //...
+
+            var writeFileStream = new FileStream(filePath, FileMode.Open);
+            try
+            {
+                //writeFileStream.Write();
+
+            }
+            finally
+            {
+                ((IDisposable)writeFileStream).Dispose();
+            }
+
+            writeFileStream.Close();
+
         }
 
     }
