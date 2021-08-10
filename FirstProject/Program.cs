@@ -12,7 +12,7 @@ namespace FirstProject
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static async Task OldMain(string[] args)
         {
             using (var httpClient = new HttpClient())
             {
@@ -41,7 +41,7 @@ namespace FirstProject
                     new HttpRequestMessage(HttpMethod.Post, "https://jsonplaceholder.typicode.com/posts"))
                 {
 
-                    //postRequestMessage.Headers.Add("someheader", "somevalue");
+                    postRequestMessage.Headers.Add("someheader", "somevalue");
                     postRequestMessage.Content = postJsonContent;
 
                     var post2Result = await httpClient.SendAsync(postRequestMessage);
