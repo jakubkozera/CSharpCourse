@@ -57,11 +57,32 @@ namespace FirstProject
             };
             Console.WriteLine("Person:");
             Display(person);
-            Console.WriteLine("Address:");
-            Display(address);
+
+            Console.WriteLine("Insert person property to update");
+            var propertyToUpdate = Console.ReadLine();
+
+            Console.WriteLine("Insert value");
+            var value = Console.ReadLine();
+
+            SetValue(person, propertyToUpdate, value);
+
+            Console.WriteLine("Person:");
+            Display(person);
 
 
         }
+
+        static void SetValue<T>(T obj, string propName, string value)
+        {
+            Type objType = typeof(T);
+
+            var propertyToUpdate = objType.GetProperty(propName);
+            if (propertyToUpdate != null)
+            {
+                propertyToUpdate.SetValue(obj, value);
+            }
+        }
+            
 
     }
 }
