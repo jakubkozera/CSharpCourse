@@ -1,5 +1,6 @@
 ﻿// ReSharper disable All
 using System;
+using System.Reflection;
 
 namespace FirstProject
 {
@@ -19,7 +20,20 @@ namespace FirstProject
 
                 if (propType.IsPrimitive || propType == typeof(string))
                 {
-                    Console.WriteLine($"{property.Name}: {propValue}");
+                    var displayPropertyAttribute = property.GetCustomAttribute<DisplayPropertyAttribute>();
+
+
+                    if (displayPropertyAttribute != null)
+                    {
+                        Console.WriteLine($"{displayPropertyAttribute.DisplayName}: {propValue}");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{property.Name}: {propValue}");
+
+                    }
+
 
                 }
             }

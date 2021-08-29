@@ -8,8 +8,12 @@ namespace FirstProject
 {
     public class Person
     {
+        [DisplayProperty("First Name")]
         public string FirstName { get; set; }
+
+        [DisplayProperty("Last Name")]
         public string LastName { get; set; }
         public Address Address { get; set; }
+
     }
 }
