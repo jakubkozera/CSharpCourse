@@ -39,35 +39,39 @@ namespace FirstProject
             }
         }
 
+        class RepoWrapper<T>
+        {
+            public Repository<T> Repository { get; set; }
+        }
+        public class Repository<T>
+        {
+            public Repository(object options)
+            {
+
+            }
+        }
 
         static void Main(string[] args)
         {
-            Address address = new Address()
+            var repo = new Repository<string>(args);
+
+            var repoWrapper = new RepoWrapper<string>
             {
-                City = "Krakow",
-                PostalCode = "31-556",
-                Street = "Grodzka 5"
+                Repository = repo
             };
 
-            Person person = new Person()
-            {
-                FirstName = "John",
-                LastName = "Doe",
-                Address = address
-            };
-            Console.WriteLine("Person:");
-            Display(person);
 
-            Console.WriteLine("Insert person property to update");
-            var propertyToUpdate = Console.ReadLine();
+            var genericArg = repoWrapper.GetType().GetGenericArguments()[0];
 
-            Console.WriteLine("Insert value");
-            var value = Console.ReadLine();
+            var repoType = typeof(Repository<>);
+            var stringRepoType = repoType.MakeGenericType(typeof(string));
 
-            SetValue(person, propertyToUpdate, value);
+            var newRepo = Activator.CreateInstance(stringRepoType, (object)args);
 
-            Console.WriteLine("Person:");
-            Display(person);
+
+
+
+            Console.WriteLine();
 
 
         }
