@@ -39,10 +39,6 @@ namespace FirstProject
             }
         }
 
-        class RepoWrapper<T>
-        {
-            public Repository<T> Repository { get; set; }
-        }
         public class Repository<T>
         {
             public Repository(object options)
@@ -54,12 +50,6 @@ namespace FirstProject
         static void Main(string[] args)
         {
             var repo = new Repository<string>(args);
-
-            var repoWrapper = new RepoWrapper<string>
-            {
-                Repository = repo
-            };
-
 
             var genericArg = repoWrapper.GetType().GetGenericArguments()[0];
 
