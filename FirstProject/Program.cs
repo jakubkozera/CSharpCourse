@@ -51,7 +51,9 @@ namespace FirstProject
         {
             var repo = new Repository<string>(args);
 
-            var genericArg = repoWrapper.GetType().GetGenericArguments()[0];
+
+
+            var genericArg = repo.GetType().GetGenericArguments()[0];
 
             var repoType = typeof(Repository<>);
             var stringRepoType = repoType.MakeGenericType(genericArg);
