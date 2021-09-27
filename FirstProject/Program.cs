@@ -25,9 +25,27 @@ namespace FirstProject
             //DivideData(googleApps);
             //OrderData(googleApps);
             //DataSetOperation(googleApps);
-            DataVerification(googleApps);
+            //DataVerification(googleApps);
+            GroupData(googleApps);
         }
 
+        static void GroupData(IEnumerable<GoogleApp> googleApps)
+        {
+            var categoryGroup = googleApps.GroupBy(e => new { e.Category, e.Type });
+
+            foreach (var group in categoryGroup)
+            {
+                var key = group.Key;
+                //var apps = artAndDesignGroup.Select(e => e);
+                var apps = group.ToList();
+                Console.WriteLine($"Displaing elements for group {group.Key.Category} , {group.Key.Type}");
+                Display(apps);
+            }
+
+            
+            
+        
+        }
 
         static void DataVerification(IEnumerable<GoogleApp> googleApps)
         {
@@ -41,6 +59,7 @@ namespace FirstProject
                 .Any(a => a.Reviews > 3_000_000);
 
             Console.WriteLine($"anyOperatorResult {anyOperatorResult}");
+
         }
 
 
