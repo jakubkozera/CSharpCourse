@@ -26,9 +26,37 @@ namespace FirstProject
             //OrderData(googleApps);
             //DataSetOperation(googleApps);
             //DataVerification(googleApps);
-            GroupData(googleApps);
+            //GroupData(googleApps);
+            GroupDataOperations(googleApps);
         }
 
+        static void GroupDataOperations(IEnumerable<GoogleApp> googleApps)
+        {
+            var categoryGroup = googleApps
+                .GroupBy(e => e.Category);
+
+            foreach (var group in categoryGroup)
+            {
+                var averageReviews = group.Average(g => g.Reviews);
+                var minReviews = group.Min(g => g.Reviews);
+                var maxReviews = group.Max(g => g.Reviews);
+
+                var reviewsCount = group.Sum(g => g.Reviews);
+
+                var allAppsFromGroupHaveRatingOfThree = group.All(a => a.Rating > 3.0);
+
+
+
+                Console.WriteLine($"Category: {group.Key}");
+                Console.WriteLine($"averageReviews: {averageReviews}");
+                Console.WriteLine($"minReviews: {minReviews}");
+                Console.WriteLine($"maxReviews: {maxReviews}");
+                Console.WriteLine($"reviewsCount: {reviewsCount}");
+                Console.WriteLine($"allAppsFromGroupHaveRatingOfThree: {allAppsFromGroupHaveRatingOfThree}");
+                Console.WriteLine();
+
+            }
+        }
         static void GroupData(IEnumerable<GoogleApp> googleApps)
         {
             var categoryGroup = googleApps.GroupBy(e => new { e.Category, e.Type });
@@ -41,10 +69,6 @@ namespace FirstProject
                 Console.WriteLine($"Displaing elements for group {group.Key.Category} , {group.Key.Type}");
                 Display(apps);
             }
-
-            
-            
-        
         }
 
         static void DataVerification(IEnumerable<GoogleApp> googleApps)
