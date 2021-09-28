@@ -15,27 +15,20 @@ namespace FirstProject
             var addresses = LoadAddresses();
 
 
-            var joinedData = people.Join(addresses,
+            var joinedData = people.GroupJoin(addresses,
                 p => p.Id,
                 a => a.PersonId,
-                (person, address) => new { person.Name, address.Street, address.City });
+                (person, addresses) => new { person.Name, Addresses = addresses });
 
             foreach (var element in joinedData)
             {
-                Console.WriteLine($"Name : {element.Name}, address: {element.City}, {element.Street}" );
+                Console.WriteLine($"Name : {element.Name}");
+                foreach (var address in element.Addresses)
+                {
+                    Console.WriteLine($"\t City: { address.City}, street: {address.Street}");
+                }
+
             }
-
-            //foreach (var person in people)
-            //{
-            //    var address = addresses.FirstOrDefault(a => a.PersonId == person.Id);
-            //    if(address != null)
-            //    {
-            //        Console.WriteLine($"Name: {person.Name}, adress: {address.City} {address.Street}");
-
-            //    }
-            //}
-
-
 
             Console.WriteLine();
         }
