@@ -37,10 +37,21 @@ namespace FirstProject
 
         static bool IsNewReservationPossible(DateTime startDate, DateTime endDate, List<Reservation> bookedReservations)
         {
-            //TODO: Implement the logic
+            foreach(var bookedReservation in bookedReservations)
+            {
+                if(startDate.Date >= bookedReservation.From.Date && startDate.Date <= bookedReservation.To.Date || 
+                    endDate.Date >= bookedReservation.From.Date && endDate.Date <= bookedReservation.To.Date)
+                {
+                    return false;
+                }
 
+                if(startDate.Date <= bookedReservation.From.Date && endDate.Date >= bookedReservation.To.Date)
+                {
+                    return false;
+                }
+            }
 
-            return false;
+            return true;
         }
 
         static void DisplayReservations(List<Reservation> bookedReservations)
