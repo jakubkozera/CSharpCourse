@@ -7,29 +7,42 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            byte byteValue = 100;
-            int intValue = byteValue;
-            byte byteValue2 = (byte)intValue;
-            double doubleValue = 3.5;
-            int intValue2 = (int)doubleValue;
+            Console.WriteLine("Kalkulator BMI");
+            Console.WriteLine("Podaj swoją masę ciała (w kg):");
+
+            string massString = Console.ReadLine();
+            double mass = double.Parse(massString);
 
 
-            string stringValue2 = intValue2.ToString();
+            Console.WriteLine("Podaj swój wzrost (w metrach):");
 
-            string userInput = Console.ReadLine();
-            int yearOfBirth;
-            if (int.TryParse(userInput, out yearOfBirth))
+            string heightString = Console.ReadLine();
+            double height = double.Parse(heightString);
+
+            double bmi = mass / (height * height);
+
+            Console.WriteLine("Twój wynik BMI to: " + bmi);
+            if(bmi < 18.5)
             {
-                int age = DateTime.Now.Year - yearOfBirth;
-
-                Console.WriteLine("You are " + age);
+                Console.WriteLine("Wyniki BMI to: niedowaga");
+            }
+            else if(bmi >= 18.5 && bmi < 25)
+            {
+                Console.WriteLine("Wyniki BMI to: waga normalna");
+            }
+            else if (bmi >= 25 && bmi < 30)
+            {
+                Console.WriteLine("Wyniki BMI to: nadwaga");
+            }
+            else if (bmi >= 30 && bmi < 35)
+            {
+                Console.WriteLine("Wyniki BMI to: otyłość");
             }
             else
             {
-                Console.WriteLine("Incorrect value");
+                Console.WriteLine("Wyniki BMI to: otyłość olbrzymia");
+
             }
-
-
         }
     }
 }
